@@ -1,0 +1,34 @@
+---
+env-1:
+  apps:
+    env-1-ns-main:
+      type: "main"
+    env-1-ns-other:
+      type: "other"
+    provider:
+      type: provider
+  infra: &infra
+    maas:
+      subtype: maas
+      type: maas
+    dbaas:
+      subtype: dbaas
+      type: dbaas
+    kafka:
+      subtype: sbt
+      type: kafka
+    postgres:
+      subtype: dbaas
+      type: postgres
+    zookeeper:
+      subtype: apps
+      type: zookeeper
+env-2:
+  apps:
+    env-2-ns-main:
+      type: "main"
+    env-2-ns-other:
+      type: "other"
+    provider:
+      type: provider
+  infra: *infra
