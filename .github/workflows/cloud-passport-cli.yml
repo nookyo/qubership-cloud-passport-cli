@@ -32,5 +32,5 @@ jobs:
 
     - name: Publish package
       run: |
-        poetry config pypi-token.pypi ${{ secrets.PYPI_API_TOKEN }}
+        poetry config pypi-token.pypi ${{ secrets.GH_ACCESS_TOKEN }}
         poetry publish --build --no-interaction
