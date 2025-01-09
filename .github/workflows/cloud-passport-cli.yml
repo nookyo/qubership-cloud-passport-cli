@@ -5,6 +5,7 @@ on:
 
 permissions:
   contents: read
+  id-token: write
 
 jobs:
   publish:
@@ -31,5 +32,4 @@ jobs:
         poetry run pytest
 
     - name: Publish package
-      run: |
-        poetry publish --build --no-interaction
+      uses: pypa/gh-action-pypi-publish@release/v1
