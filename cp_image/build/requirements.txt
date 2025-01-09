@@ -1,1 +1,2 @@
 cloud_passport_cli==2.3.4
+click==8.1.3
