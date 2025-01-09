@@ -1,4 +1,4 @@
-FROM ghcr.io/netcracker/base-images-module-base:latest
+FROM ghcr.io/netcracker/base-images-module-base:main
 
 USER root
 
