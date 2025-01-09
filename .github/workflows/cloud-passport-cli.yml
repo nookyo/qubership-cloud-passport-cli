@@ -26,7 +26,11 @@ jobs:
         python -m pip install --user pipx
         pipx install poetry
 
-    - name: Build & Test
+    - name: Build package
+      run: |
+        poetry build 
+
+    - name: Run tests
       run: |
         poetry install
         poetry run pytest
