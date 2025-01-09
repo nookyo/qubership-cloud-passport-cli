@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "cloud-passport-cli"
+name = "qubership-cloud-passport-cli"
 version = "2.3.4"
 description = ""
 authors = ["Qubership"]
