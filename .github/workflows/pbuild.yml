@@ -29,8 +29,8 @@ on:
 jobs:
   init:
     runs-on: ubuntu-latest
-    env:
-      PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
+    # env:
+    #   PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
 
     steps:
       - name: Debug variables    
