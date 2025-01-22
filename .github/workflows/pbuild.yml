@@ -78,7 +78,7 @@ jobs:
 
       - name: Debug PYPI_TOKEN
         run: |
-          if [ -z "${{ env.PYPI_TOKEN }}" ]; then
+          if [ -z "${{ secrets.PYPI_API_TOKEN }}" ]; then
             echo "PYPI_TOKEN is empty. Ensure the secret is set correctly."
             exit 1
           else
