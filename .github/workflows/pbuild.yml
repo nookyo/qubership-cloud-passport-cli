@@ -29,9 +29,6 @@ on:
 jobs:
   init:
     runs-on: ubuntu-latest
-    # env:
-    #   PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
-
     steps:
       - name: Debug variables    
         run: |
@@ -76,24 +73,11 @@ jobs:
             ls -l dist/
             echo "Build validation complete."
 
-      
-      - name: Debug PYPI_TOKEN
-        run: |
-          if [ -z "${{ secrets.PYPI_API_TOKEN }}" ]; then
-            echo "PYPI_TOKEN is empty. Ensure the secret is set correctly."
-            exit 1
-          else
-            echo "PYPI_TOKEN is set."
-          fi
-
-
       - name: Remove dist
         run: |
             rm -rf dist/    
 
       - name: Build and Publish to PyPI}}
-        # run: |
-        #   poetry publish --build --no-interaction -u __token__ -p $PYPI_TOKEN
         run: |
           poetry config pypi-token.pypi $PYPI_TOKEN
           poetry publish --build --no-interaction          
