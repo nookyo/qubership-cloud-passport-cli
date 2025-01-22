@@ -86,17 +86,17 @@ jobs:
             echo "PYPI_TOKEN is set."
           fi
 
-          
+
       - name: Remove dist
         run: |
             rm -rf dist/    
 
-      - name: Build and Publish to PyPI
-        # env:
-        #   PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
+      - name: Build and Publish to PyPI}}
         # run: |
         #   poetry publish --build --no-interaction -u __token__ -p $PYPI_TOKEN
         run: |
-          poetry config pypi-token.pypi ${{ secrets.PYPI_API_TOKEN }}
+          poetry config pypi-token.pypi $PYPI_TOKEN
           poetry publish --build --no-interaction          
+        env:
+            PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
           
