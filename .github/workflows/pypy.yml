@@ -10,7 +10,7 @@ on:
       run_tests:
         description: 'Run tests'
         type: boolean
-        required: false
+        required: true
         default: true  
 jobs:
   build:
