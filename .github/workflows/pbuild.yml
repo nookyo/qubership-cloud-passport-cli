@@ -76,6 +76,7 @@ jobs:
             ls -l dist/
             echo "Build validation complete."
 
+      
       - name: Debug PYPI_TOKEN
         run: |
           if [ -z "${{ secrets.PYPI_API_TOKEN }}" ]; then
@@ -84,6 +85,11 @@ jobs:
           else
             echo "PYPI_TOKEN is set."
           fi
+
+          
+      - name: Remove dist
+        run: |
+            rm -rf dist/    
 
       - name: Build and Publish to PyPI
         # env:
