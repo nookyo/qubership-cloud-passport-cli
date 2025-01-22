@@ -36,7 +36,10 @@ jobs:
             echo python-version = ${{ inputs.python-version }}
             echo poetry_build_params = ${{ inputs.poetry_build_params }}
             echo run-rests = ${{ inputs.pytest_run }} 
-            echo pytest_params = ${{ inputs.pytest_params }}   
+            echo pytest_params = ${{ inputs.pytest_params }} 
+            
+            echo Environment (Context):
+                env
 
       - name: Checkout
         uses: actions/checkout@v4
