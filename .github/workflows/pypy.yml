@@ -9,10 +9,7 @@ on:
         default: '3.11'
 jobs:
   build:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Python build
-      uses: nookyo/workflow-hub/.github/workflows/python-build.yml@main     
+      uses: nookyo/workflow-hub/.github/workflows/python-build.yml@main
       with:
-        python-version: ${{ github.event.inputs.version }}  
+        python-version: ${{ github.event.inputs.version }}
             
