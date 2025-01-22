@@ -3,7 +3,14 @@ name: Pypy
 on:
   workflow_dispatch:
     inputs:
+
       version:
+        required: true
+        default: '2025.1-1.0.0'
+        type: string
+        description: 'Custom release version'        
+
+      python_version:
         description: 'Python version'
         required: true
         default: '3.11'
@@ -25,7 +32,8 @@ jobs:
   build:
       uses: nookyo/workflow-hub/.github/workflows/python-build.yml@main
       with:
-        python-version: ${{ inputs.version }}
+        version: ${{ inputs.version }}
+        python-version: ${{ inputs.python_version }}
         poetry_build_params: ${{ inputs.poetry_build_params }}
         pytest_run: ${{ inputs.pytest_run }}
         pytest_params: ${{ inputs.pytest_params }}
