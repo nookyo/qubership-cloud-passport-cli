@@ -7,9 +7,15 @@ on:
         description: 'Python version'
         required: true
         default: '3.11'
+      run_tests:
+        description: 'Run tests'
+        type: boolean
+        required: true
+        default: true  
 jobs:
   build:
       uses: nookyo/workflow-hub/.github/workflows/python-build.yml@main
       with:
         python-version: ${{ github.event.inputs.version }}
+        run-tests: ${{ github.event.inputs.run_tests }}
             
