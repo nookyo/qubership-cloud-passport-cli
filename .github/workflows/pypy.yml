@@ -16,6 +16,6 @@ jobs:
   build:
       uses: nookyo/workflow-hub/.github/workflows/python-build.yml@main
       with:
-        python-version: ${{ github.event.inputs.version }}
-        run-tests: ${{ github.event.inputs.run_tests }}
+        python-version: ${{ inputs.version }}
+        run-tests: ${{ inputs.run_tests }}
             
