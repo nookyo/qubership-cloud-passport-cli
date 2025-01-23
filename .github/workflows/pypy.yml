@@ -20,7 +20,7 @@ on:
         required: false
         default: ''
       pytest_run:
-        description: 'Run pytest (true/false)'
+        description: 'Run pytest'
         type: boolean
         required: true
         default: true
