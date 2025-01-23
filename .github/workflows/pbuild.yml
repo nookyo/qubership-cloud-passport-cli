@@ -63,7 +63,15 @@ jobs:
 
       - name: Remove dist
         run: |
-           rm -rf dist/    
+           rm -rf dist/
+
+      - name: AutoPatch version
+        if: ${{ inputs.poetry_version_options != '' && inputs.version == '' }}
+        run: poetry version ${{ inputs.poetry_version_options }}
+       
+      - name: Set specific version
+        if: ${{ inputs.version != '' }}
+        run: poetry version ${{ inputs.version }}               
  
       - name: Build package
         run: |
@@ -78,15 +86,7 @@ jobs:
         if: ${{ inputs.pytest_run == true }}
         run: |
           poetry install
-          poetry run pytest ${{ inputs.pytest_params }}
-
-      - name: AutoPatch version
-        if: ${{ inputs.poetry_version_options != '' && inputs.version == '' }}
-        run: poetry version ${{ inputs.poetry_version_options }}
-    
-      - name: Set specific version
-        if: ${{ inputs.version != '' }}
-        run: poetry version ${{ inputs.version }}          
+          poetry run pytest ${{ inputs.pytest_params }}      
           
 
       - name: Upload artifacts to GitHub
