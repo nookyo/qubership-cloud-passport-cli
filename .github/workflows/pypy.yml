@@ -1,4 +1,4 @@
-name: Invoke Python Build
+name: Python Publish
 
 on:
   workflow_dispatch:
@@ -30,7 +30,7 @@ on:
         default: '--maxfail=3 -v'
 
 jobs:
-  invoke_python_build:
+  publish:
     uses: nookyo/workflow-hub/.github/workflows/python-build.yml@main
     with:
       version: ${{ inputs.version }}
