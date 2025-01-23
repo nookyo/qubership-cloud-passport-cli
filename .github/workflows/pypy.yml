@@ -20,9 +20,9 @@ on:
         required: false
         default: ''
       pytest_run:
-        description: 'Run pytest'
-        type: boolean
+        description: 'Run pytest (true/false)'
         required: true
+        type: boolean
         default: true
       pytest_params:
         description: 'Parameters for pytest'
@@ -33,11 +33,11 @@ jobs:
   invoke_python_build:
     uses: nookyo/workflow-hub/.github/workflows/python-build.yml@main
     with:
-      version: ${{ github.event.inputs.version }}
-      poetry_version_options: ${{ github.event.inputs.poetry_version_options }}
-      python-version: ${{ github.event.inputs.python-version }}
-      poetry_build_params: ${{ github.event.inputs.poetry_build_params }}
-      pytest_run: ${{ github.event.inputs.pytest_run }}
-      pytest_params: ${{ github.event.inputs.pytest_params }}
+      version: ${{ inputs.version }}
+      poetry_version_options: ${{ inputs.poetry_version_options }}
+      python-version: ${{ inputs.python-version }}
+      poetry_build_params: ${{ inputs.poetry_build_params }}
+      pytest_run: ${{ inputs.pytest_run }}
+      pytest_params: ${{ inputs.pytest_params }}
     secrets:
       PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}            
