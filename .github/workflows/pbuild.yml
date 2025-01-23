@@ -38,7 +38,7 @@ jobs:
             echo run-rests = ${{ inputs.pytest_run }} 
             echo pytest_params = ${{ inputs.pytest_params }} 
             
-            echo Environment (Context):
+            echo Environment:
                 env
 
       - name: Checkout
