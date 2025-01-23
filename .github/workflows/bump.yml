@@ -32,7 +32,7 @@ on:
 jobs:
   publish:
     name: Bump
-    uses: nookyo/workflow-hub/.github/workflows/python-bump.yml@main
+    uses: nookyo/workflow-hub/.github/workflows/bump.yml@main
     with:
       version: ${{ inputs.version }}
       poetry_version_options: ${{ inputs.poetry_version_options }}
