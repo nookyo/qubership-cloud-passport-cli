@@ -55,14 +55,18 @@ jobs:
           python -m pip install --user pipx
           pipx install poetry
 
-      - name: Validate build
+      - name: Remove dist
         run: |
-            ls -l dist/
-            echo "Build validation complete."          
-
+           rm -rf dist/    
+ 
       - name: Build package
         run: |
           poetry build ${{ inputs.poetry_build_params }}
+
+      - name: Validate build
+        run: |
+          ls -l dist/
+          echo "Build validation complete."              
 
       - name: Run tests
         if: ${{ inputs.pytest_run == true }}
@@ -75,10 +79,6 @@ jobs:
         with:
           name: app-build
           path: dist/*
-
-      - name: Remove dist
-        run: |
-            rm -rf dist/    
 
       - name: Build and Publish to PyPi
         run: |
