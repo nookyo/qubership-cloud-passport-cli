@@ -1,44 +1,43 @@
-name: Pypy
+name: Invoke Python Build
 
 on:
   workflow_dispatch:
     inputs:
-
       version:
-        required: true
-        default: '2025.1-1.0.0'
-        type: string
-        description: 'Custom release version'        
-
-      python_version:
-        description: 'Python version'
-        required: true
+        description: 'Specify version (optional)'
+        required: false
+        default: ''
+      poetry_version_options:
+        description: 'Poetry version bump (e.g., patch, minor, major)'
+        required: false
+        default: 'patch'
+      python-version:
+        description: 'Python version to use'
+        required: false
         default: '3.11'
       poetry_build_params:
-        description: 'Poetry build parameters'
+        description: 'Additional poetry build parameters'
         required: false
         default: ''
-
       pytest_run:
-        description: 'Run tests'
+        description: 'Run pytest (true/false)'
         type: boolean
         required: true
-        default: true    
+        default: true
       pytest_params:
-        description: 'Pytest parameters'
+        description: 'Parameters for pytest'
         required: false
-        default: ''
+        default: '--maxfail=3 -v'
+
 jobs:
-  build:
-      uses: nookyo/workflow-hub/.github/workflows/python-build.yml@main
-      with:
-        version: ${{ inputs.version }}
-        python-version: ${{ inputs.python_version }}
-        poetry_build_params: ${{ inputs.poetry_build_params }}
-        pytest_run: ${{ inputs.pytest_run }}
-        pytest_params: ${{ inputs.pytest_params }}
-      secrets:
-        PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}  
-
-
-            
+  invoke_python_build:
+    uses: nookyo/workflow-hub/.github/workflows/python-build.yml@main
+    with:
+      version: ${{ github.event.inputs.version }}
+      poetry_version_options: ${{ github.event.inputs.poetry_version_options }}
+      python-version: ${{ github.event.inputs.python-version }}
+      poetry_build_params: ${{ github.event.inputs.poetry_build_params }}
+      pytest_run: ${{ github.event.inputs.pytest_run }}
+      pytest_params: ${{ github.event.inputs.pytest_params }}
+    secrets:
+      PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}            
