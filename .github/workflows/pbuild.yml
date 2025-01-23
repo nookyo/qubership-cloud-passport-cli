@@ -6,6 +6,10 @@ on:
       version:
         required: false
         type: string
+      poetry_version_options:
+        required: false
+        type: string
+        default: 'patch'        
 
       python-version:
         required: false
@@ -14,11 +18,6 @@ on:
       poetry_build_params:
         required: false
         type: string
-
-      poetry_version_options:
-        required: false
-        type: string
-        default: 'patch'
 
       pytest_run:
         required: true
