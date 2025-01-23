@@ -91,4 +91,10 @@ jobs:
           poetry publish --no-interaction
         env:
             PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
+
+      - name: Update Source
+        run: |        
+          git config --global user.email "tech@qubership.org"
+          git config --global user.name "tech"
+          git add . m "Update version to ${{ inputs.version }} for release"      
           
