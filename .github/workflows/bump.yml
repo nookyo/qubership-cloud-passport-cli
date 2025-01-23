@@ -39,6 +39,7 @@ jobs:
       python-version: ${{ inputs.python-version }}
       poetry_build_params: ${{ inputs.poetry_build_params }}
   publish:
+    needs: bump-build
     name: Publish
     uses: nookyo/workflow-hub/.github/workflows/python-publish.yml@main
     with:
