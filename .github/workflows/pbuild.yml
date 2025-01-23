@@ -10,7 +10,7 @@ on:
       python-version:
         required: false
         type: string
-        default: '3.11'
+        default: '3.13'
       poetry_build_params:
         required: false
         type: string  
