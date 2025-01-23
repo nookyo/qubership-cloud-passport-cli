@@ -33,7 +33,7 @@ on:
           
 
 jobs:
-  build_publish:
+  pypi_publish:
     runs-on: ubuntu-latest
     steps:
       - name: Debug variables    
@@ -62,8 +62,7 @@ jobs:
           pipx install poetry==1.8.3
 
       - name: Remove dist
-        run: |
-           rm -rf dist/
+        run: rm -rf dist/
 
       - name: AutoPatch version
         if: ${{ inputs.poetry_version_options != '' && inputs.version == '' }}
@@ -74,8 +73,7 @@ jobs:
         run: poetry version ${{ inputs.version }}               
  
       - name: Build package
-        run: |
-          poetry build ${{ inputs.poetry_build_params }}
+        run: poetry build ${{ inputs.poetry_build_params }}
 
       - name: Validate build
         run: |
