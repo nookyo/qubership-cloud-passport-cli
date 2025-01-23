@@ -13,7 +13,12 @@ on:
         default: '3.11'
       poetry_build_params:
         required: false
-        type: string  
+        type: string
+
+      poetry_version_options:
+        required: false
+        type: string
+        default: 'patch'
 
       pytest_run:
         required: true
@@ -21,6 +26,7 @@ on:
       pytest_params:
         required: false
         type: string
+
     # secrets:
     #   PYPI_API_TOKEN:
     #     required: true        
@@ -73,6 +79,15 @@ jobs:
         run: |
           poetry install
           poetry run pytest ${{ inputs.pytest_params }}
+
+      - name: AutoPatch version
+        if: ${{ inputs.poetry_version_options != '' && inputs.version == '' }}
+        run: poetry version ${{ inputs.poetry_version_options }}
+    
+      - name: Set specific version
+        if: ${{ inputs.version != '' }}
+        run: poetry version ${{ inputs.version }}          
+          
 
       - name: Upload artifacts to GitHub
         uses: actions/upload-artifact@v3
