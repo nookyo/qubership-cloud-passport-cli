@@ -31,15 +31,22 @@ on:
 
 jobs:
   publish:
+    name: Python Build
     uses: nookyo/workflow-hub/.github/workflows/python-bump.yml@main
-
-    uses: nookyo/workflow-hub/.github/workflows/python-build.yml@main
     with:
       version: ${{ inputs.version }}
       poetry_version_options: ${{ inputs.poetry_version_options }}
       python-version: ${{ inputs.python-version }}
       poetry_build_params: ${{ inputs.poetry_build_params }}
-      pytest_run: ${{ inputs.pytest_run }}
-      pytest_params: ${{ inputs.pytest_params }}
-    secrets:
-      PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}            
+
+    # name: Python Publish    
+    # uses: nookyo/workflow-hub/.github/workflows/python-build.yml@main
+    # with:
+    #   version: ${{ inputs.version }}
+    #   poetry_version_options: ${{ inputs.poetry_version_options }}
+    #   python-version: ${{ inputs.python-version }}
+    #   poetry_build_params: ${{ inputs.poetry_build_params }}
+    #   pytest_run: ${{ inputs.pytest_run }}
+    #   pytest_params: ${{ inputs.pytest_params }}
+    # secrets:
+    #   PYPI_API_TOKEN: ${{ secrets.PYPI_API_TOKEN }}            
