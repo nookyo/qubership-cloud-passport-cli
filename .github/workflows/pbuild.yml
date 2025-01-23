@@ -33,7 +33,7 @@ on:
           
 
 jobs:
-  init:
+  build_publish:
     runs-on: ubuntu-latest
     steps:
       - name: Debug variables    
