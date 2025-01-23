@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "qubership-cloud-passport-cli"
-version = "2.3.6"
+version = "2.3.7"
 description = ""
 authors = ["Qubership"]
 readme = "CLOUD_PASSPORT_CLI_PYPI_README.md"
