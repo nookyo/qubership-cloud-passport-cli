@@ -89,12 +89,12 @@ jobs:
           poetry install
           poetry run pytest ${{ inputs.pytest_params }}      
 
-      # - name: Publish to PyPi
-      #   run: |
-      #     poetry config pypi-token.pypi $PYPI_TOKEN
-      #     poetry publish --no-interaction -p test 
-      #   env:
-      #       PYPI_TOKEN: ${{ secrets.PYPI_TEST_API_TOKEN }}
+      - name: Publish to PyPi
+        run: |
+          poetry config pypi-token.pypi $PYPI_TOKEN
+          poetry publish --no-interaction -p test 
+        env:
+            PYPI_TOKEN: ${{ secrets.PYPI_TEST_API_TOKEN }}
 
       - name: Update Source on GitHub
         run: |        
