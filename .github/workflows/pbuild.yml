@@ -83,7 +83,7 @@ jobs:
       - name: Publish to PyPi
         run: |
           poetry config pypi-token.pypi $PYPI_TOKEN
-          poetry publish --no-interaction -vvv
+          poetry publish --no-interaction
         env:
             PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
           
