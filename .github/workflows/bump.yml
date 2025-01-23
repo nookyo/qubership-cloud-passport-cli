@@ -31,7 +31,7 @@ on:
 
 jobs:
   publish:
-    name: Python Build
+    name: Bump
     uses: nookyo/workflow-hub/.github/workflows/python-bump.yml@main
     with:
       version: ${{ inputs.version }}
