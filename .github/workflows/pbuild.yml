@@ -92,7 +92,7 @@ jobs:
         env:
             PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }}
 
-      - name: Update Source
+      - name: Update Source on GitHub
         run: |        
           git config --global user.email "tech@qubership.org"
           git config --global user.name "tech"
