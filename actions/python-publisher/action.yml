@@ -68,7 +68,8 @@ runs:
     - name: Publish to PyPi
       shell: bash
       run: |
+        poetry config repositories.test https://test.pypi.org/legacy/
         poetry config pypi-token.pypi $PYPI_TOKEN
-        poetry publish --no-interaction --repository-url https://upload.pypi.org/legacy/
+        poetry publish --no-interaction -n test
       env:
         PYPI_TOKEN: ${{ env.PYPI_API_TOKEN }}
