@@ -22,9 +22,7 @@ inputs:
     description: 'Parameters for pytest'
     required: false
     default: ''
-  PYPI_API_TOKEN:
-    description: 'PyPi API token'
-    required: true   
+
 
 runs:
   using: composite
@@ -73,4 +71,4 @@ runs:
         poetry config pypi-token.pypi $PYPI_TOKEN
         poetry publish --no-interaction --repository-url https://upload.pypi.org/legacy/
       env:
-        PYPI_TOKEN: ${{ inputs.PYPI_API_TOKEN }}
+        PYPI_TOKEN: ${{ env.PYPI_API_TOKEN }}
