@@ -63,12 +63,12 @@ runs:
 
     - name: AutoPatch version
       shell: bash
-      if: ${{ inputs.poetry_version_options != '' && inputs.app_version == '' }}
+      if: inputs.poetry_version_options != '' && inputs.app_version == ''
       run: poetry version ${{ inputs.poetry_version_options }}
 
     - name: Set specific version
       shell: bash
-      if: ${{ inputs.app_version != '' }}
+      if: inputs.app_version != ''
       run: poetry version ${{ inputs.app_version }}
 
     - name: Build package
