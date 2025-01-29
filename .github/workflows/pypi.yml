@@ -60,6 +60,7 @@ jobs:
                 poetry_build_params: ${{ inputs.poetry_build_params }}
                 pytest_run: ${{ inputs.pytest_run }}
                 pytest_params: ${{ inputs.pytest_params }}
+                pypi-token: ${{ secrets.PYPI_TEST_API_TOKEN }}
               env:
                 PYPI_TOKEN: ${{ secrets.PYPI_TEST_API_TOKEN }}
 
