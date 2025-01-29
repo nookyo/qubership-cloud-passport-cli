@@ -86,6 +86,6 @@ runs:
       shell: bash
       run: |
         poetry config pypi-token.pypi $PYPI_TOKEN
-        poetry publish --no-interaction
+        poetry publish --no-interaction -u __token__ -p $PYPI_TOKEN
       env:
         PYPI_TOKEN: ${{ env.PYPI_TOKEN }}
