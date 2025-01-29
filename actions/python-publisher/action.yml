@@ -5,7 +5,7 @@ inputs:
   poetry_version_options:
     description: 'Options for patching version (e.g., "patch", "minor")'
     required: false
-    default: ''
+    default: 'patch'
   app_version:
     description: 'Specific application version to set for the package'
     required: false
