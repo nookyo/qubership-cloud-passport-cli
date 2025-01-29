@@ -38,6 +38,11 @@ runs:
       shell: bash
       run: rm -rf dist/
 
+
+    - name: Debug environment variables
+      shell: bash
+      run: env | grep PYPI
+
     - name: AutoPatch version
       shell: bash
       if: ${{ inputs.poetry_version_options != '' && inputs.version == '' }}
