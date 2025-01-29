@@ -21,6 +21,7 @@ inputs:
     description: 'Run tests with pytest'
     required: false
     default: 'false'
+
   pytest_options:
     description: 'Parameters for pytest'
     required: false
