@@ -36,6 +36,17 @@ runs:
         python -m pip install --user pipx
         pipx install poetry
 
+    - name: Check token length
+      shell: bash
+      run: |
+        echo "Token length: ${#PYPI_TOKEN}"
+        if [ ${#PYPI_TOKEN} -lt 10 ]; then
+          echo "Token length is less than 10 characters."
+          exit 1
+        fi
+      env:
+        PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }}]
+
     - name: Remove dist
       shell: bash
       run: rm -rf dist/
