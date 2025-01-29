@@ -1,4 +1,4 @@
-name: PyPi Publisher
+name: Using Poetry Publisher
 
 on:
     workflow_dispatch:
@@ -28,7 +28,7 @@ on:
                 default: ''
 
 jobs:
-    poetry-publish:
+    publish:
         runs-on: ubuntu-latest
         steps:
             - name: Debug variables
