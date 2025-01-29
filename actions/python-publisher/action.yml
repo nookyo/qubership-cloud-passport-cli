@@ -30,6 +30,10 @@ runs:
   using: composite
   steps:
 
+    - name: Enable Debug Mode
+      shell: bash
+      run: echo "ACTIONS_STEP_DEBUG=true" >> $GITHUB_ENV
+
     - name: Install dependencies
       shell: bash
       run: |
@@ -51,10 +55,6 @@ runs:
         fi
       env:
         PYPI_TOKEN: ${{ env.PYPI_TOKEN }}]
-
-    - name: Debug environment variables
-      shell: bash
-      run: env | grep PYPI
 
     - name: Bumping version
       shell: bash
@@ -78,7 +78,7 @@ runs:
 
     - name: Run tests
       shell: bash
-      if: ${{ inputs.pytest_run == 'true' }}
+      if: inputs.pytest_run == 'true'
       run: |
         poetry install
         poetry run pytest ${{ inputs.pytest_params }}
