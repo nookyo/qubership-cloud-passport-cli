@@ -70,7 +70,7 @@ runs:
 
     - name: Build package
       shell: bash
-      run: poetry build ${{ inputs.poetry_build_options }}
+      run: poetry build ${{ inputs.poetry_build_options || '' }}
 
     - name: Validate build
       shell: bash
