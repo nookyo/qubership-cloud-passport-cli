@@ -7,7 +7,7 @@ on:
                 description: 'Version to publish'
                 default: ''
                 required: false
-            poetry_version_options:
+            poetry_version_bump:
                 description: 'Options for poetry version command'
                 default: 'patch'
                 required: false
@@ -34,7 +34,7 @@ jobs:
             - name: Debug variables
               run: |
                   echo version = ${{ inputs.app_version }}
-                  echo poetry_version_options = ${{ inputs.poetry_version_options }}
+                  echo poetry_version_options = ${{ inputs.poetry_version_bump }}
                   echo python-version = ${{ inputs.python-version }}
                   echo poetry_build_params = ${{ inputs.poetry_build_params }}
                   echo pytest_run = ${{ inputs.pytest_run }}
@@ -59,7 +59,7 @@ jobs:
               with:
                 app_version: ${{ inputs.app_version }}
                 python-version: ${{ inputs.python-version }}
-                poetry_version_options: ${{ inputs.poetry_version_options }}
+                poetry_version_bump: ${{ inputs.poetry_version_bump }}
                 poetry_build_params: ${{ inputs.poetry_build_params }}
                 pytest_run: ${{ inputs.pytest_run }}
                 pytest_params: ${{ inputs.pytest_params }}

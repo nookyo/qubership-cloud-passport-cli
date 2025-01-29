@@ -8,7 +8,7 @@ inputs:
     required: false
     default: ''
 
-  poetry_version_options:
+  poetry_version_bump:
     description: 'Options for patching version (e.g., "patch", "minor")'
     required: false
     default: 'patch'
@@ -58,8 +58,8 @@ runs:
 
     - name: Bumping version
       shell: bash
-      if: inputs.poetry_version_options != '' && inputs.app_version == ''
-      run: poetry version ${{ inputs.poetry_version_options }}
+      if: inputs.poetry_version_bump != '' && inputs.app_version == ''
+      run: poetry version ${{ inputs.poetry_version_bump }}
 
     - name: Set specific version
       shell: bash
