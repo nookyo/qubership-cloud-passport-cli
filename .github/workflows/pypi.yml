@@ -9,7 +9,7 @@ on:
                 required: false
             poetry_version_options:
                 description: 'Options for poetry version command'
-                default: ''
+                default: 'patch'
                 required: false
             python-version:
                 description: 'Python version to use'
