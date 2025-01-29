@@ -47,15 +47,16 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v4
 
-            - name: Set up Python
-              uses: actions/setup-python@v5
-              with:
-                  python-version: ${{ inputs.python-version }}
+            # - name: Set up Python
+            #   uses: actions/setup-python@v5
+            #   with:
+            #       python-version: ${{ inputs.python-version }}
 
             - name: Python Publisher
               uses: ./actions/python-publisher
               with:
                 app_version: ${{ inputs.app_version }}
+                python-version: ${{ inputs.python-version }}
                 poetry_version_options: ${{ inputs.poetry_version_options }}
                 poetry_build_params: ${{ inputs.poetry_build_params }}
                 pytest_run: ${{ inputs.pytest_run }}
