@@ -28,7 +28,7 @@ on:
                 default: ''
 
 jobs:
-    build-publish:
+    poetry-publish:
         runs-on: ubuntu-latest
         steps:
             - name: Debug variables
@@ -54,7 +54,7 @@ jobs:
                   cache: 'pip'
                   check-latest: true
 
-            - name: Python Publisher
+            - name: Poerty Publisher
               uses: ./actions/python-publisher
               with:
                 app_version: ${{ inputs.app_version }}
