@@ -12,6 +12,7 @@ inputs:
     description: 'Options for patching version (e.g., "patch", "minor")'
     required: false
     default: 'patch'
+
   poetry_build_options:
     description: 'Additional parameters for poetry build'
     required: false
@@ -55,16 +56,16 @@ runs:
           exit 1
         fi
       env:
-        PYPI_TOKEN: ${{ env.PYPI_TOKEN }}]
+        PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
 
     - name: Bumping version
       shell: bash
-      if: inputs.poetry_version_bump != '' && inputs.package_version == ''
+      if: ${{ inputs.poetry_version_bump != '' && inputs.package_version == '' }}
       run: poetry version ${{ inputs.poetry_version_bump }}
 
     - name: Set specific version
       shell: bash
-      if: inputs.package_version != ''
+      if: ${{ inputs.package_version != '' }}
       run: poetry version ${{ inputs.package_version }}
 
     - name: Build package
@@ -79,16 +80,7 @@ runs:
 
     - name: Run tests
       shell: bash
-      if: inputs.run_pytest == 'true'
+      if: ${{ inputs.run_pytest == 'true' }}
       run: |
         poetry install
         poetry run pytest ${{ inputs.pytest_options }}
-
-    # - name: Publish to PyPi
-    #   shell: bash
-    #   run: |
-    #     poetry config pypi-token.pypi $PYPI_TOKEN
-    #     poetry config repositories.test https://test.pypi.org/legacy/
-    #     poetry publish --no-interaction -u __token__ -p $PYPI_TOKEN -r test
-    #   env:
-    #     PYPI_TOKEN: ${{ env.PYPI_TOKEN }}
