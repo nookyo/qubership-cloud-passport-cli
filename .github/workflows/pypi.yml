@@ -41,9 +41,6 @@ jobs:
                   echo pytest_params = ${{ inputs.pytest_params }}
                   echo PYPI_API_TOKEN = ${{ secrets.PYPI_API_TOKEN }}
 
-                  echo "Environment:"
-                  env
-
             - name: Checkout
               uses: actions/checkout@v4
 
