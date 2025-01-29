@@ -62,7 +62,7 @@ runs:
 
     - name: Set specific version
       shell: bash
-      if: ${{ inputs.version != '' }}
+      if: ${{ inputs.app_version != '' }}
       run: poetry version ${{ inputs.app_version }}
 
     - name: Build package
