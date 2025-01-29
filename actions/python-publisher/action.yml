@@ -2,18 +2,25 @@ name: 'Poetry Publisher'
 description: ''
 
 inputs:
-  poetry_version_options:
-    description: 'Options for patching version (e.g., "patch", "minor")'
+  python-version:
+    description: 'Python version to use'
     required: false
-    default: 'patch'
+    default: '3.11'
+
   app_version:
     description: 'Specific application version to set for the package'
     required: false
     default: ''
+
+  poetry_version_options:
+    description: 'Options for patching version (e.g., "patch", "minor")'
+    required: false
+    default: 'patch'
   poetry_build_params:
     description: 'Additional parameters for poetry build'
     required: false
     default: ''
+
   pytest_run:
     description: 'Run tests with pytest'
     required: false
@@ -22,10 +29,6 @@ inputs:
     description: 'Parameters for pytest'
     required: false
     default: ''
-  python-version:
-    description: 'Python version to use'
-    required: false
-    default: '3.11'  
 
 runs:
   using: composite
