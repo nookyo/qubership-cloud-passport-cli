@@ -49,7 +49,7 @@ runs:
           exit 1
         fi
       env:
-        PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }}]
+        PYPI_TOKEN: ${{ env.PYPI_API_TOKEN }}]
 
     - name: Debug environment variables
       shell: bash
