@@ -3,7 +3,7 @@ name: Using Poetry Publisher
 on:
     workflow_dispatch:
         inputs:
-            app_version:
+            package_version:
                 description: 'Version to publish'
                 default: ''
                 required: false
@@ -11,34 +11,33 @@ on:
                 description: 'Options for poetry version command'
                 default: 'patch'
                 required: false
-            python-version:
+            python_version:
                 description: 'Python version to use'
                 default: '3.11'
                 required: false
-            poetry_build_params:
-                description: 'Parameters for poetry build command'
+            poetry_build_options:
+                description: 'Options for poetry build command'
                 default: ''
                 required: false
-            pytest_run:
+            run_pytest:
                 description: 'Run tests with pytest'
                 default: false
                 type: boolean
-            pytest_params:
-                description: 'Parameters for pytest'
-                default: ''
-
+            pytest_options:
+                description: 'Options for pytest'
+                default:
 jobs:
     publish:
         runs-on: ubuntu-latest
         steps:
             - name: Debug variables
               run: |
-                  echo version = ${{ inputs.app_version }}
+                  echo version = ${{ inputs.package_version }}
                   echo poetry_version_options = ${{ inputs.poetry_version_bump }}
-                  echo python-version = ${{ inputs.python-version }}
-                  echo poetry_build_params = ${{ inputs.poetry_build_params }}
-                  echo pytest_run = ${{ inputs.pytest_run }}
-                  echo pytest_params = ${{ inputs.pytest_params }}
+                  echo python_version = ${{ inputs.python_version }}
+                  echo poetry_build_options = ${{ inputs.poetry_build_options }}
+                  echo run_pytest = ${{ inputs.run_pytest }}
+                  echo pytest_options = ${{ inputs.pytest_options }}
                   echo PYPI_API_TOKEN = ${{ secrets.PYPI_API_TOKEN }}
 
             - name: Checkout
@@ -47,19 +46,19 @@ jobs:
             - name: Set up Python
               uses: actions/setup-python@v5
               with:
-                  python-version: ${{ inputs.python-version }}
+                  python-version: ${{ inputs.python_version }}
                   cache: 'pip'
                   check-latest: true
 
             - name: Poerty Publisher
               uses: ./actions/python-publisher
               with:
-                app_version: ${{ inputs.app_version }}
+                package_version: ${{ inputs.package_version }}
                 python-version: ${{ inputs.python-version }}
                 poetry_version_bump: ${{ inputs.poetry_version_bump }}
-                poetry_build_params: ${{ inputs.poetry_build_params }}
-                pytest_run: ${{ inputs.pytest_run }}
-                pytest_params: ${{ inputs.pytest_params }}
+                poetry_build_options: ${{ inputs.poetry_build_options }}
+                run_pytest: ${{ inputs.run_pytest }}
+                pytest_options: ${{ inputs.pytest_options }}
               env:
                 PYPI_TOKEN: ${{ secrets.PYPI_TEST_API_TOKEN }}
 
