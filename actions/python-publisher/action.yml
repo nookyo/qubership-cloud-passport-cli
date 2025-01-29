@@ -36,6 +36,10 @@ runs:
         python -m pip install --user pipx
         pipx install poetry
 
+    - name: Remove dist
+      shell: bash
+      run: rm -rf dist/  
+
     - name: Check token length
       shell: bash
       run: |
@@ -46,11 +50,6 @@ runs:
         fi
       env:
         PYPI_TOKEN: ${{ secrets.PYPI_API_TOKEN }}]
-
-    - name: Remove dist
-      shell: bash
-      run: rm -rf dist/
-
 
     - name: Debug environment variables
       shell: bash
