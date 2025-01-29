@@ -54,11 +54,10 @@ jobs:
               uses: ./actions/python-publisher
               with:
                 package_version: ${{ inputs.package_version }}
-                python-version: ${{ inputs.python-version }}
                 poetry_version_bump: ${{ inputs.poetry_version_bump }}
                 poetry_build_options: ${{ inputs.poetry_build_options }}
                 run_pytest: ${{ inputs.run_pytest }}
                 pytest_options: ${{ inputs.pytest_options }}
               env:
-                PYPI_TOKEN: ${{ secrets.PYPI_TEST_API_TOKEN }}
+                PYPI_API_TOKEN: ${{ secrets.PYPI_TEST_API_TOKEN }}
 

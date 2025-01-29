@@ -52,7 +52,7 @@ runs:
           exit 1
         fi
       env:
-        PYPI_TOKEN: ${{ secrets.PYPI_TOKEN }}
+        PYPI_TOKEN: ${{ env.PYPI_API_TOKEN }}
 
     - name: Set package version
       shell: bash
@@ -79,3 +79,13 @@ runs:
       run: |
         poetry install
         poetry run pytest ${{ inputs.pytest_options }}
+
+
+    # - name: Publish to PyPi
+    #   shell: bash
+    #   run: |
+    #     poetry config pypi-token.pypi $PYPI_TOKEN
+    #     poetry config repositories.test https://test.pypi.org/legacy/
+    #     poetry publish --no-interaction -u __token__ -p $PYPI_TOKEN -r test
+    #   env:
+    #     PYPI_TOKEN: ${{ env.PYPI_TOKEN }}
