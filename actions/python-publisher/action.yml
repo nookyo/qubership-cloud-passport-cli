@@ -38,7 +38,7 @@ runs:
 
     - name: Remove dist
       shell: bash
-      run: rm -rf dist/  
+      run: rm -rf dist/
 
     - name: Check token length
       shell: bash
