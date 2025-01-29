@@ -21,8 +21,8 @@ on:
                 required: false
             pytest_run:
                 description: 'Run tests with pytest'
-                default: 'false'
-                required: false
+                default: false
+                type: boolean
             pytest_params:
                 description: 'Parameters for pytest'
                 default: ''
